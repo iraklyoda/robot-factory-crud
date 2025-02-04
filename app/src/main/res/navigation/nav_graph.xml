@@ -6,7 +6,7 @@
     app:startDestination="@id/robotsFragment">
     <fragment
         android:id="@+id/robotsFragment"
-        android:name="com.example.roomdatabaseapp.robot.RobotsFragment"
+        android:name="com.example.roomdatabaseapp.fragments.list.RobotsFragment"
         android:label="fragment_robots"
         tools:layout="@layout/fragment_robots" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/addRobotFragment"
-        android:name="com.example.roomdatabaseapp.robot.AddRobotFragment"
+        android:name="com.example.roomdatabaseapp.fragments.add.AddRobotFragment"
         android:label="fragment_add_robot"
         tools:layout="@layout/fragment_add_robot" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateRobotFragment"
-        android:name="com.example.roomdatabaseapp.robot.UpdateRobotFragment"
+        android:name="com.example.roomdatabaseapp.fragments.update.UpdateRobotFragment"
         android:label="fragment_update_robot"
         tools:layout="@layout/fragment_update_robot" >
         <action

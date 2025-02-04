@@ -22,7 +22,7 @@ class UpdateRobotViewModel(context: Context): ViewModel() {
 
     fun updateRobot(robot: Robot) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.updateUser(robot)
+            repository.updateRobot(robot)
         }
     }
 

@@ -11,8 +11,12 @@ class RobotRepository(private val robotDao: RobotDao) {
         robotDao.addRobot(robot)
     }
 
-    suspend fun updateUser(robot: Robot) {
+    suspend fun updateRobot(robot: Robot) {
         robotDao.updateRobot(robot)
+    }
+
+    suspend fun deleteRobot(robot: Robot) {
+        robotDao.deleteRobot(robot)
     }
 
     companion object {

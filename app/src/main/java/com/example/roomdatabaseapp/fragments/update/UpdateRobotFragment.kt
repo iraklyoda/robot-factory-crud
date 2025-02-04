@@ -1,4 +1,4 @@
-package com.example.roomdatabaseapp.robot
+package com.example.roomdatabaseapp.fragments.update
 
 import android.util.Log.d
 import android.view.View
@@ -14,6 +14,7 @@ import com.example.roomdatabaseapp.R
 import com.example.roomdatabaseapp.databinding.FragmentUpdateRobotBinding
 import com.example.roomdatabaseapp.model.Robot
 import com.example.roomdatabaseapp.model.RobotPurpose
+import com.example.roomdatabaseapp.robot.UpdateRobotViewModel
 import com.example.roomdatabaseapp.utils.checkEmpty
 import com.example.roomdatabaseapp.utils.getString
 
@@ -25,7 +26,6 @@ class UpdateRobotFragment :
     private val updateRobotViewModel: UpdateRobotViewModel by viewModels() {
         UpdateRobotViewModel.Factory(context = requireContext())
     }
-
 
     override fun start() {
         returnHome()
@@ -65,7 +65,7 @@ class UpdateRobotFragment :
             tvRobotName.text = args.currentRobot.name
 
             etIq.setText(args.currentRobot.iq.toString())
-            tvRobotIq.text = args.currentRobot.iq.toString()
+            tvRobotIq.text = getString(R.string.iq_update, args.currentRobot.iq.toString())
         }
     }
 
@@ -75,7 +75,7 @@ class UpdateRobotFragment :
                 tvRobotName.text = value.toString()
             }
             etIq.doOnTextChanged { value, _, _, _ ->
-                tvRobotIq.text = value.toString()
+                tvRobotIq.text = getString(R.string.iq, value.toString())
             }
 
             spinnerPurpose.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -120,7 +120,11 @@ class UpdateRobotFragment :
             val robot = validateForm()
             if (robot != null) {
                 updateRobotViewModel.updateRobot(robot)
-                d("Updated Robot", "$robot")
+                Toast.makeText(
+                    requireContext(),
+                    "Robot ${robot.name} has been rebuilt",
+                    Toast.LENGTH_SHORT
+                ).show()
                 findNavController().navigateUp()
             }
         }

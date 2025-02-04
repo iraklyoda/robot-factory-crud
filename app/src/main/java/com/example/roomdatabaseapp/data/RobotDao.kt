@@ -1,6 +1,7 @@
 package com.example.roomdatabaseapp.data
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -15,6 +16,9 @@ interface RobotDao {
 
     @Update
     suspend fun updateRobot(robot: Robot)
+
+    @Delete
+    suspend fun deleteRobot(robot: Robot)
 
     @Query("SELECT * FROM robot_table ORDER BY id DESC")
     fun getAll(): Flow<List<Robot>>

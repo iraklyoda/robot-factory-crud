@@ -10,4 +10,15 @@
     <string name="intelligence_quotient">Intelligence quotient</string>
     <string name="rebuild_your_robot">Rebuild Your Robot</string>
     <string name="build_robot">Build Robot</string>
+    <string name="name_is_required">Name is required</string>
+    <string name="iq_is_required">IQ is required</string>
+    <string name="delete_item">Delete Item</string>
+    <string name="are_you_sure_you_want_to_delete_this_item">Are you sure you want to delete this item?</string>
+    <string name="yes">Yes</string>
+    <string name="robot_terminated">Robot %1$s terminated</string>
+    <string name="no">No</string>
+    <string name="iq">%1$s IQ</string>
+    <string name="iq_adapter">%1$s IQ</string>
+    <string name="iq_update">%1$s IQ</string>
+    <string name="are_you_sure_you_want_to_deactivate_this_robot">Are you sure you want to Deactivate this robot?</string>
 </resources>

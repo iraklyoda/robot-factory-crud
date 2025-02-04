@@ -1,4 +1,4 @@
-package com.example.roomdatabaseapp.robot
+package com.example.roomdatabaseapp.fragments.add
 
 import android.view.View
 import android.widget.AdapterView
@@ -12,6 +12,7 @@ import com.example.roomdatabaseapp.R
 import com.example.roomdatabaseapp.model.Robot
 import com.example.roomdatabaseapp.model.RobotPurpose
 import com.example.roomdatabaseapp.databinding.FragmentAddRobotBinding
+import com.example.roomdatabaseapp.robot.AddRobotViewModel
 import com.example.roomdatabaseapp.utils.checkEmpty
 import com.example.roomdatabaseapp.utils.getString
 
@@ -34,7 +35,7 @@ class AddRobotFragment : BaseFragment<FragmentAddRobotBinding>(FragmentAddRobotB
                 tvRobotName.text = value.toString()
             }
             etIq.doOnTextChanged { value, _, _, _ ->
-                tvRobotIq.text = value.toString()
+                tvRobotIq.text = getString(R.string.iq, value.toString())
             }
 
             spinnerPurpose.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -83,11 +84,13 @@ class AddRobotFragment : BaseFragment<FragmentAddRobotBinding>(FragmentAddRobotB
     private fun validateForm(): Robot? {
         with(binding) {
             if (etName.checkEmpty()) {
-                Toast.makeText(requireContext(), "Name is required", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.name_is_required), Toast.LENGTH_SHORT).show()
                 return null
             }
             if (etIq.checkEmpty()) {
-                Toast.makeText(requireContext(), "IQ is required", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.iq_is_required), Toast.LENGTH_SHORT).show()
                 return null
             }
             return Robot(
