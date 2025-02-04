@@ -26,7 +26,7 @@ This Android project is a simple **robot management application** that allows us
 2. **Display robot list** in a RecyclerView using list adapter.
 3. **Update or delete robots** through the UI.
 4. **Use Room for local data storage** and persist robot information even when the app is closed.
-5. **Manage UI state** with ViewModels and LiveData or StateFlow.
+5. **Manage UI state** with ViewModels and Flow.
 
 ## Screenshots
 
