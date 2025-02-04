@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.RoomDatabaseApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/philippine_brown</item>
+        <item name="android:background">@color/philippine_brown</item>
+        <item name="android:textColorHint">@color/intense_brown_50</item>
+        <item name="fontFamily">@font/smooch_sans</item>
+    </style>
+
+    <style name="Theme.RoomDatabaseApp" parent="Base.Theme.RoomDatabaseApp" />
+</resources>

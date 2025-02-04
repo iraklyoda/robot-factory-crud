@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/robotsFragment">
+    <fragment
+        android:id="@+id/robotsFragment"
+        android:name="com.example.roomdatabaseapp.robot.RobotsFragment"
+        android:label="fragment_robots"
+        tools:layout="@layout/fragment_robots" >
+        <action
+            android:id="@+id/action_robotsFragment_to_addRobotFragment"
+            app:destination="@id/addRobotFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addRobotFragment"
+        android:name="com.example.roomdatabaseapp.robot.AddRobotFragment"
+        android:label="fragment_add_robot"
+        tools:layout="@layout/fragment_add_robot" >
+        <action
+            android:id="@+id/action_addRobotFragment_to_robotsFragment"
+            app:destination="@id/robotsFragment" />
+    </fragment>
+</navigation>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RoomDatabaseApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_button">Add Button</string>
+    <string name="hello_robots">Hello Robots</string>
+    <string name="build_a_new_robot">Build a new robot:</string>
+    <string name="name">Name:</string>
+    <string name="purpose">Purpose</string>
+    <string name="intelligence_quotient">Intelligence quotient</string>
+</resources>
