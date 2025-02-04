@@ -8,4 +8,6 @@
     <string name="name">Name:</string>
     <string name="purpose">Purpose</string>
     <string name="intelligence_quotient">Intelligence quotient</string>
+    <string name="rebuild_your_robot">Rebuild Your Robot</string>
+    <string name="build_robot">Build Robot</string>
 </resources>

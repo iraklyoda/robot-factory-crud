@@ -2,10 +2,11 @@ package com.example.roomdatabaseapp.robot
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.roomdatabaseapp.data.Robot
+import com.example.roomdatabaseapp.model.Robot
 import com.example.roomdatabaseapp.databinding.RobotItemBinding
 
 class RobotsDiffUtil : DiffUtil.ItemCallback<Robot>() {
@@ -24,9 +25,16 @@ class RobotsAdapter : ListAdapter<Robot, RobotsAdapter.RobotsViewHolder>(RobotsD
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(robot: Robot) {
             binding.apply {
+                tvId.text = robot.id.toString()
                 tvRobotName.text = robot.name
-                tvRobotPurpose.text = robot.purpose
+                tvRobotPurpose.text = robot.purpose.name
                 tvRobotIq.text = robot.iq.toString()
+                ivProfile.setImageResource(robot.purpose.img)
+            }
+
+            binding.root.setOnClickListener {
+                val action = RobotsFragmentDirections.actionRobotsFragmentToUpdateRobotFragment(robot)
+                itemView.findNavController().navigate(action)
             }
         }
 

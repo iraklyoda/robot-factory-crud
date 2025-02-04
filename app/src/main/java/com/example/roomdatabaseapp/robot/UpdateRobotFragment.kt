@@ -1,5 +1,6 @@
 package com.example.roomdatabaseapp.robot
 
+import android.util.Log.d
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -7,25 +8,65 @@ import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.roomdatabaseapp.BaseFragment
 import com.example.roomdatabaseapp.R
+import com.example.roomdatabaseapp.databinding.FragmentUpdateRobotBinding
 import com.example.roomdatabaseapp.model.Robot
 import com.example.roomdatabaseapp.model.RobotPurpose
-import com.example.roomdatabaseapp.databinding.FragmentAddRobotBinding
 import com.example.roomdatabaseapp.utils.checkEmpty
 import com.example.roomdatabaseapp.utils.getString
 
-class AddRobotFragment : BaseFragment<FragmentAddRobotBinding>(FragmentAddRobotBinding::inflate) {
+class UpdateRobotFragment :
+    BaseFragment<FragmentUpdateRobotBinding>(FragmentUpdateRobotBinding::inflate) {
 
-    private val addRobotViewModel: AddRobotViewModel by viewModels() {
-        AddRobotViewModel.Factory(context = requireContext())
+    private val args by navArgs<UpdateRobotFragmentArgs>()
+
+    private val updateRobotViewModel: UpdateRobotViewModel by viewModels() {
+        UpdateRobotViewModel.Factory(context = requireContext())
     }
 
+
     override fun start() {
-        handleInputs()
-        addRobot()
         returnHome()
         setUpSpinner()
+        setInputs()
+        handleInputs()
+        rebuildRobot()
+    }
+
+    private fun returnHome() {
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
+
+    private fun setUpSpinner() {
+        val robotPurposes = RobotPurpose.entries.toTypedArray()
+
+        val adapter = ArrayAdapter(
+            requireContext(), R.layout.spinner_header_item,
+            robotPurposes
+        )
+        adapter.setDropDownViewResource(R.layout.spinner_item)
+        binding.spinnerPurpose.adapter = adapter
+
+        val currentPurpose = args.currentRobot.purpose
+        val position = robotPurposes.indexOf(currentPurpose)
+
+        if (position != -1) {
+            binding.spinnerPurpose.setSelection(position)
+        }
+    }
+
+    private fun setInputs() {
+        binding.apply {
+            etName.setText(args.currentRobot.name)
+            tvRobotName.text = args.currentRobot.name
+
+            etIq.setText(args.currentRobot.iq.toString())
+            tvRobotIq.text = args.currentRobot.iq.toString()
+        }
     }
 
     private fun handleInputs() {
@@ -55,31 +96,6 @@ class AddRobotFragment : BaseFragment<FragmentAddRobotBinding>(FragmentAddRobotB
         }
     }
 
-    private fun addRobot() {
-        binding.btnBuild.setOnClickListener {
-            val newRobot = validateForm()
-            if (newRobot != null) {
-                addRobotViewModel.addRobot(newRobot)
-                findNavController().navigateUp()
-            }
-        }
-    }
-
-    private fun returnHome() {
-        binding.btnBack.setOnClickListener {
-            findNavController().navigateUp()
-        }
-    }
-
-    private fun setUpSpinner() {
-        val adapter = ArrayAdapter(
-            requireContext(), R.layout.spinner_header_item,
-            RobotPurpose.entries.toTypedArray()
-        )
-        adapter.setDropDownViewResource(R.layout.spinner_item)
-        binding.spinnerPurpose.adapter = adapter
-    }
-
     private fun validateForm(): Robot? {
         with(binding) {
             if (etName.checkEmpty()) {
@@ -91,11 +107,22 @@ class AddRobotFragment : BaseFragment<FragmentAddRobotBinding>(FragmentAddRobotB
                 return null
             }
             return Robot(
-                id = 0,
+                id = args.currentRobot.id,
                 name = etName.getString().uppercase(),
                 purpose = RobotPurpose.valueOf(spinnerPurpose.selectedItem.toString()),
                 iq = etIq.getString().toInt()
             )
+        }
+    }
+
+    private fun rebuildRobot() {
+        binding.btnBuild.setOnClickListener {
+            val robot = validateForm()
+            if (robot != null) {
+                updateRobotViewModel.updateRobot(robot)
+                d("Updated Robot", "$robot")
+                findNavController().navigateUp()
+            }
         }
     }
 }

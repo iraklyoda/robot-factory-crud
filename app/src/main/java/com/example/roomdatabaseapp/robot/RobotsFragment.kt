@@ -43,7 +43,6 @@ class RobotsFragment : BaseFragment<FragmentRobotsBinding>(FragmentRobotsBinding
         viewLifecycleOwner.lifecycleScope.launch {
             robotsViewModel.getAllData.collectLatest { robots ->
                 robotsAdapter.submitList(robots)
-                d("RobotsInList", "$robots")
             }
         }
     }

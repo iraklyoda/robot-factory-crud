@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.roomdatabaseapp.model.Robot
 
 @Database(entities = [Robot::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class RobotDatabase : RoomDatabase() {
 
     abstract fun robotDao(): RobotDao

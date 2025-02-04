@@ -7,23 +7,37 @@
     android:background="@drawable/robot_item_bg"
     android:padding="24dp">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="id"
+        android:background="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_profile"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/robot_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.4"
         app:shapeAppearanceOverlay="@style/CircleImageView" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_robot_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:background="@null"
         android:text="Name: Robot name"
         android:textColor="@color/white"

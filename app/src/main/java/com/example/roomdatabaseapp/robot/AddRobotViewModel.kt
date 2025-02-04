@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.roomdatabaseapp.data.Robot
+import com.example.roomdatabaseapp.model.Robot
 import com.example.roomdatabaseapp.data.RobotDatabase
 import com.example.roomdatabaseapp.data.RobotRepository
 import kotlinx.coroutines.Dispatchers

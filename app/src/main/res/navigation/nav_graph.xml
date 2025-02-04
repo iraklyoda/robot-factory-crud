@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_robotsFragment_to_addRobotFragment"
             app:destination="@id/addRobotFragment" />
+        <action
+            android:id="@+id/action_robotsFragment_to_updateRobotFragment"
+            app:destination="@id/updateRobotFragment" />
     </fragment>
     <fragment
         android:id="@+id/addRobotFragment"
@@ -21,5 +24,17 @@
         <action
             android:id="@+id/action_addRobotFragment_to_robotsFragment"
             app:destination="@id/robotsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateRobotFragment"
+        android:name="com.example.roomdatabaseapp.robot.UpdateRobotFragment"
+        android:label="fragment_update_robot"
+        tools:layout="@layout/fragment_update_robot" >
+        <action
+            android:id="@+id/action_updateRobotFragment_to_robotsFragment"
+            app:destination="@id/robotsFragment" />
+        <argument
+            android:name="currentRobot"
+            app:argType="com.example.roomdatabaseapp.model.Robot" />
     </fragment>
 </navigation>

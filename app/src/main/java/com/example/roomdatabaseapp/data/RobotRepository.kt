@@ -1,5 +1,6 @@
 package com.example.roomdatabaseapp.data
 
+import com.example.roomdatabaseapp.model.Robot
 import kotlinx.coroutines.flow.Flow
 
 class RobotRepository(private val robotDao: RobotDao) {
@@ -8,6 +9,10 @@ class RobotRepository(private val robotDao: RobotDao) {
 
     suspend fun addRobot(robot: Robot) {
         robotDao.addRobot(robot)
+    }
+
+    suspend fun updateUser(robot: Robot) {
+        robotDao.updateRobot(robot)
     }
 
     companion object {
